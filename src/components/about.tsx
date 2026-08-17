@@ -1,5 +1,5 @@
 import handgesture from "../assets/hand.png";
-import CodeLaptopWorkSpace from "../assets/CodeLaptop.jpg"
+import CodeLaptopWorkSpace from "../assets/codeLaptop.jpg"
 
 const About = () => {
   return (

@@ -1,7 +1,7 @@
 import PWA from "../assets/pwa.svg"
 import EfCore from "../assets/efCore.svg"
 import NetFramework from "../assets/net_framework.png"
-import WebAPI from "../assets/WebApi.png"
+import WebAPI from "../assets/webApi.png"
 
 const SKILLS = [
     // {
