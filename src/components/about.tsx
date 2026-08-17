@@ -1,4 +1,5 @@
 import handgesture from "../assets/hand.png";
+import CodeLaptopWorkSpace from "../assets/CodeLaptop.jpg"
 
 const About = () => {
   return (
@@ -58,7 +59,7 @@ const About = () => {
           <div className="relative w-full max-w-sm">
             <div className="relative rounded-2xl overflow-hidden border border-accent/20 shadow-2xl shadow-accent/5">
               <img
-                src="src\assets\CodeLaptop.jpg"
+                src={CodeLaptopWorkSpace}
                 alt="workspace"
                 className="w-full h-80 object-cover"
               />
