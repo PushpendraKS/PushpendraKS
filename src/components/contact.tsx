@@ -15,7 +15,7 @@ const Contact = () => {
                         }}
                     >
                         <span className="w-6 h-px bg-accent" />
-                        06 / Contact
+                        07 / Contact
                     </p>
                     <h2
                         className="text-5xl font-bold leading-tight text-foreground mb-5"

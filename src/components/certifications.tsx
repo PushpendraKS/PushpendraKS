@@ -46,7 +46,7 @@ const Certifications = () => {
                             }}
                         >
                             <span className="w-6 h-px bg-accent" />
-                            05 / Certifications
+                            06 / Certifications
                         </p>
                         <h2
                             className="text-4xl font-bold text-foreground"

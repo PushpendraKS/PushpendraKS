@@ -27,7 +27,7 @@ const Education = () => {
                         }}
                     >
                         <span className="w-6 h-px bg-accent" />
-                        02 / Education
+                        05 / Education
                     </p>
                     <h2
                         className="text-4xl font-bold text-foreground"
