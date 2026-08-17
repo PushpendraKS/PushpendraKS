@@ -1,0 +1,315 @@
+@custom-variant dark (&:is(.dark *));
+
+/* ── Light mode (default) ── */
+:root {
+  --font-size: 16px;
+  --background: #f0f5ff;
+  --foreground: #0d1b2e;
+  --card: #ffffff;
+  --card-foreground: #0d1b2e;
+  --popover: #ffffff;
+  --popover-foreground: #0d1b2e;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #dbeafe;
+  --secondary-foreground: #1e3a5f;
+  --muted: #e8f0fe;
+  --muted-foreground: #4a6080;
+  --accent: #2563eb;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(37, 99, 235, 0.15);
+  --input: transparent;
+  --input-background: #dbeafe;
+  --switch-background: #93c5fd;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #2563eb;
+  --chart-1: #2563eb;
+  --chart-2: #38bdf8;
+  --chart-3: #818cf8;
+  --chart-4: #34d399;
+  --chart-5: #f472b6;
+  --radius: 6px;
+  --sidebar: #f0f5ff;
+  --sidebar-foreground: #0d1b2e;
+  --sidebar-primary: #2563eb;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #dbeafe;
+  --sidebar-accent-foreground: #1e3a5f;
+  --sidebar-border: rgba(37, 99, 235, 0.15);
+  --sidebar-ring: #2563eb;
+  --gradient-text: linear-gradient(135deg, var(--accent), var(--ring));
+
+  --github-background: rgb(82 82 82 / 40%);
+}
+
+/* ── Dark mode ── */
+.dark {
+  --background: #04101f;
+  --foreground: #dde6f5;
+  --card: #081830;
+  --card-foreground: #dde6f5;
+  --popover: #081830;
+  --popover-foreground: #dde6f5;
+  --primary: #4f8ef7;
+  --primary-foreground: #ffffff;
+  --secondary: #0d2140;
+  --secondary-foreground: #dde6f5;
+  --muted: #0d2140;
+  --muted-foreground: #6a85aa;
+  --accent: #4f8ef7;
+  --accent-foreground: #ffffff;
+  --destructive: #ff4444;
+  --destructive-foreground: #dde6f5;
+  --border: rgba(79, 142, 247, 0.12);
+  --input: #0d2140;
+  --ring: #4f8ef7;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: #4f8ef7;
+  --chart-2: #38bdf8;
+  --chart-3: #818cf8;
+  --chart-4: #34d399;
+  --chart-5: #f472b6;
+  --sidebar: #04101f;
+  --sidebar-foreground: #dde6f5;
+  --sidebar-primary: #4f8ef7;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #0d2140;
+  --sidebar-accent-foreground: #dde6f5;
+  --sidebar-border: rgba(79, 142, 247, 0.12);
+  --sidebar-ring: #4f8ef7;
+
+  --github-background: rgb(51, 51, 51);
+
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /**
+  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
+  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+  */
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+
+  #about strong {
+    color: var(--text-primary);
+    font-weight: 600;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  #experience .align-journey {
+    left: calc(0.088rem * 4);
+  }
+
+  #home #badge {
+    right: -2rem
+  }
+
+  .wave {
+    animation-duration: 1.8s;
+    animation-iteration-count: infinite;
+    animation-name: wave;
+    display: inline-block;
+    transform-origin: 70% 70%;
+
+    img {
+      height: 1em;
+      width: 1em;
+      margin: 0px 0.05em 0px 0.1em;
+      vertical-align: -0.1em;
+    }
+  }
+
+
+  @keyframes wave {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    10% {
+      transform: rotate(-10deg);
+    }
+
+    20% {
+      transform: rotate(12deg);
+    }
+
+    30% {
+      transform: rotate(-10deg);
+    }
+
+    40% {
+      transform: rotate(9deg);
+    }
+
+    50% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .icon-button i {
+    color: var(--foreground);
+    font-size: 1.3rem;
+    height: 2.6rem;
+    line-height: 2.6rem !important;
+    text-align: center !important;
+    width: 2.6rem !important;
+    border-radius: 1.4rem;
+    margin: 0px 5px 10px;
+    transition: 0.2s ease-in;
+  }
+
+  .github i {
+    background-color: var(--github-background);
+  }
+
+  .linkedin i {
+    background-color: rgb(14, 118, 168);
+  }
+
+  .google i {
+    background-color: rgb(234, 67, 53);
+  }
+
+  .gitlab i {
+    background-color: rgb(252, 163, 38);
+  }
+
+  .facebook i {
+    background-color: rgb(59, 89, 152);
+  }
+
+  .stack-overflow i {
+    background-color: rgb(244, 128, 36);
+  }
+
+  .medium i {
+    background-color: rgb(0, 0, 0);
+  }
+
+
+  .facebook i:hover,
+  .github i:hover,
+  .gitlab i:hover,
+  .google i:hover,
+  .instagram i:hover,
+  .kaggle i:hover,
+  .linkedin i:hover,
+  .medium i:hover,
+  .stack-overflow i:hover,
+  .twitter i:hover {
+    background-color: transparent;
+    font-size: 1.5rem;
+    transition: 0.2s ease-in;
+  }
+
+  .stacks {
+    color: rgb(134, 142, 150);
+
+    :hover {
+      color: var(--accent);
+    }
+  }
+}
