@@ -1,0 +1,37 @@
+name: Build and Push Artifacts
+
+on:
+  push:
+    branches:
+      - main  # Triggers immediately when a PR is merged into main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build React Vite Project
+        run: npm run build  # This generates the 'dist' folder
+
+      - name: Push Artifacts to Target Repo
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.DEPLOY_TOKEN }}
+        with:
+          source-directory: 'dist'  # Vite default build folder
+          destination-github-username: 'PushpendraKS'
+          destination-repository-name: 'pushpendraks.github.io'
+          user-email: 'actions@github.com'
+          target-branch: 'main'  # Target branch in the destination repo
