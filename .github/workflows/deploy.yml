@@ -4,36 +4,39 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
-      - name: Checkout Source Code
+      - name: Checkout source code
         uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: npm
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm ci
 
-      - name: Build React Vite Project
+      - name: Build portfolio
         run: npm run build
 
-      - name: Deploy built site to GitHub Pages repo
+      - name: Deploy build to GitHub Pages repo
         uses: peaceiris/actions-gh-pages@v4
         with:
-          # DEPLOY_TOKEN must be a PAT created by PushpendraKS and scoped to access:
+          # Create a PAT in the PushpendraKS account and grant access only to:
           # PushpendraKS/pushpendraks.github.io with Contents: Read and write
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
           external_repository: PushpendraKS/pushpendraks.github.io
           publish_dir: ./dist
           publish_branch: main
           force_orphan: true
-          user_name: Pushpendra
+          user_name: PushpendraKS
           user_email: push.ks24@gmail.com
