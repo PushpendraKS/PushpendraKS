@@ -1,9 +1,9 @@
-name: Build and Push Artifacts
+name: Build and Deploy Portfolio
 
 on:
   push:
     branches:
-      - main  # Triggers immediately when a PR is merged into main
+      - main
 
 jobs:
   build-and-deploy:
@@ -23,15 +23,17 @@ jobs:
         run: npm ci
 
       - name: Build React Vite Project
-        run: npm run build  # This generates the 'dist' folder
+        run: npm run build
 
-      - name: Push Artifacts to Target Repo
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.DEPLOY_TOKEN }}
+      - name: Deploy built site to GitHub Pages repo
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          source-directory: 'dist'  # Vite default build folder
-          destination-github-username: 'PushpendraKS'
-          destination-repository-name: 'pushpendraks.github.io'
-          user-email: 'actions@github.com'
-          target-branch: 'main'  # Target branch in the destination repo
+          # DEPLOY_TOKEN must be a PAT created by PushpendraKS and scoped to access:
+          # PushpendraKS/pushpendraks.github.io with Contents: Read and write
+          personal_token: ${{ secrets.DEPLOY_TOKEN }}
+          external_repository: PushpendraKS/pushpendraks.github.io
+          publish_dir: ./dist
+          publish_branch: main
+          force_orphan: true
+          user_name: PushpendraKS
+          user_email: actions@github.com
