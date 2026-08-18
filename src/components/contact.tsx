@@ -59,7 +59,7 @@ const Contact = () => {
 
                 <div className="bg-card border border-border rounded-2xl p-8 space-y-5">
                     <a
-                        href="tel:+94760028661"
+                        href="tel:+917974146275"
                         className="flex items-center gap-4 group"
                     >
                         <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors flex-shrink-0">
