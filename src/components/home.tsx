@@ -6,7 +6,7 @@ const Home = ({ dark }: { dark: boolean }) => {
     return (
         <section
             id="home"
-            className="min-h-screen flex flex-col justify-center px-6 relative overflow-hidden bg-background transition-colors duration-300"
+            className="min-h-screen flex flex-col justify-center px-6 relative  bg-background transition-colors duration-300"
         >
             {/* radial glow — adapts per mode */}
             <div
