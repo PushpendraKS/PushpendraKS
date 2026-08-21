@@ -1,4 +1,5 @@
 import { Phone, Mail, Linkedin, ArrowUpRight } from "lucide-react";
+import { trackEvent } from "../analytics/analytics";
 
 const Contact = () => {
     return (
@@ -60,6 +61,8 @@ const Contact = () => {
                 <div className="bg-card border border-border rounded-2xl p-8 space-y-5">
                     <a
                         href="tel:+917974146275"
+                        onClick={() => trackEvent("contact_click", { click: "Mobile" })}
+
                         className="flex items-center gap-4 group"
                     >
                         <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors flex-shrink-0">
@@ -87,6 +90,8 @@ const Contact = () => {
                     <div className="border-t border-border" />
                     <a
                         href="mailto:push.ks24@gmail.com"
+                        onClick={() => trackEvent("contact_click", { click: "Email" })}
+
                         className="flex items-center gap-4 group"
                     >
                         <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors flex-shrink-0">
@@ -140,6 +145,7 @@ const Contact = () => {
                         href="https://www.linkedin.com/in/pushpendra-kumar24"
                         target="_blank"
                         rel="noreferrer"
+                        onClick={() => trackEvent("social_click", { click: "Linkedin" })}
                         className="flex items-center gap-4 group"
                     >
                         <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors flex-shrink-0">
@@ -167,6 +173,7 @@ const Contact = () => {
                     <div className="pt-2">
                         <a
                             href="mailto:push.ks24@gmail.com"
+                            onClick={() => trackEvent("contact_click", { click: "Send Message" })}
                             className="w-full inline-flex items-center justify-center gap-2 bg-accent text-white px-6 py-3 text-sm font-semibold rounded-lg hover:bg-accent/90 transition-all"
                             style={{
                                 fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -180,5 +187,6 @@ const Contact = () => {
         </section>
     );
 }
+
 
 export default Contact;

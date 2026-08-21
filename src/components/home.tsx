@@ -1,6 +1,7 @@
 import { ChevronDown, FileText } from "lucide-react";
 import ImageWithFallback from "./ui/ImageWithFallback";
 import portfolioPhoto from "../assets/profilepic.jpg"
+import { trackEvent } from "../analytics/analytics";
 
 const Home = ({ dark }: { dark: boolean }) => {
     return (
@@ -137,6 +138,7 @@ const Home = ({ dark }: { dark: boolean }) => {
                                 href="https://drive.google.com/file/d/1NqPdZag4rBr-HhuAd4EbDoYmacl1K7i2/view?usp=sharing"
                                 download
                                 target="_blank" rel="noopener noreferrer"
+                                onClick={() => trackEvent("resume_download", { "download": "Resume" })}
                                 className="inline-flex items-center gap-2 bg-accent text-white px-5 py-2.5 text-sm font-semibold rounded-lg hover:bg-accent/90 transition-all hover:-translate-y-px"
                                 style={{
                                     fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -146,6 +148,7 @@ const Home = ({ dark }: { dark: boolean }) => {
                             </a>
                             <a
                                 href="#contact"
+                                onClick={() => trackEvent("contact_click", { "click": " Get in Touch" })}
                                 className="inline-flex items-center gap-2 border border-border text-foreground px-5 py-2.5 text-sm font-semibold rounded-lg hover:border-accent/40 transition-all"
                                 style={{
                                     fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -167,5 +170,6 @@ const Home = ({ dark }: { dark: boolean }) => {
         </section>
     );
 }
+
 
 export default Home;

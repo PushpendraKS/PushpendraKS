@@ -1,6 +1,7 @@
 import { Sun, Moon } from "lucide-react";
 import { useEffect, useState } from "react";
 import Logo from "../assets/pk.png"
+import { trackNavigationClick } from "../analytics/analytics";
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -50,6 +51,7 @@ const Nav = ({
             <li key={href}>
               <a
                 href={href}
+                onClick={() => trackNavigationClick(label)}
                 className={`text-sm transition-colors duration-200 ${active === href.slice(1)
                   ? "text-accent"
                   : "text-muted-foreground hover:text-foreground"
