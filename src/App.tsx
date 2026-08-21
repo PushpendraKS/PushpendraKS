@@ -10,6 +10,7 @@ import Education from "./components/educations";
 import Certifications from "./components/certifications";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
+import SectionTracker from "./analytics/sectionTracker";
 
 
 const useTheme = () => {
@@ -63,6 +64,7 @@ const App = () => {
 
   return (
     <div className="bg-background text-foreground min-h-screen [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <SectionTracker/>
       <Nav active={active} dark={dark} onToggle={toggle} />
       <Home dark={dark} />
       <About />

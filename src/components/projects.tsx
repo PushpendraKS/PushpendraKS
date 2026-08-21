@@ -4,6 +4,7 @@ import Papersave from "../assets/papersave.png";
 import Analytics from "../assets/analytics.png";
 import HealthTechImage from "../assets/healthTech.png";
 import Protocol from "../assets/protocol.png";
+import { trackEvent } from "../analytics/analytics";
 
 const PROJECTS = [
     {
@@ -22,9 +23,9 @@ const PROJECTS = [
     {
         index: "02",
         title: "Analytics",
-        description:"Analytics is an enterprise-grade SaaS analytics platform built to transform client database data into automated reports and actionable business insights. The platform provides a centralized framework for configuring and executing analytics, supporting both standard pre-built analytics and client-specific custom analytics. With scheduled processing and automated report generation, it minimizes repetitive manual analysis and enables organizations to consistently monitor key business metrics. \n\nThe solution is designed to make analytics more scalable and accessible by automating the journey from data processing to analysis, reporting, and insight generation, helping clients gain timely visibility into their business performance.",
+        description: "Analytics is an enterprise-grade SaaS analytics platform built to transform client database data into automated reports and actionable business insights. The platform provides a centralized framework for configuring and executing analytics, supporting both standard pre-built analytics and client-specific custom analytics. With scheduled processing and automated report generation, it minimizes repetitive manual analysis and enables organizations to consistently monitor key business metrics. \n\nThe solution is designed to make analytics more scalable and accessible by automating the journey from data processing to analysis, reporting, and insight generation, helping clients gain timely visibility into their business performance.",
         role: "Individual Contributor — Full Stack",
-        tags: ["Angular", ".NET", "SQL Server", "C#", "Web API", "Entity Framework", "Linq", "Azure Cloud", ],
+        tags: ["Angular", ".NET", "SQL Server", "C#", "Web API", "Entity Framework", "Linq", "Azure Cloud",],
         github: null,
         projectLink: null,
         live: null,
@@ -39,7 +40,7 @@ const PROJECTS = [
         description: "Rovicare is a healthcare care coordination and transitional care management platform designed to simplify and streamline the patient journey across the healthcare continuum. The platform brings hospitals, healthcare providers, care teams, patients, families, and external partners together in a centralized digital environment, replacing fragmented processes that traditionally rely on phone calls, emails, faxes, and multiple disconnected systems.\n\nRovicare enables healthcare teams to manage digital referrals, coordinate patient transitions, share medical information, schedule follow-up appointments, communicate with internal and external providers, and track the progress of each patient through intuitive dashboards. Its provider network helps care teams quickly identify and connect with appropriate healthcare partners, while analytics provide visibility into operational performance, referral activity, and partner effectiveness. The platform also supports patient and family engagement through dedicated communication and portal capabilities, creating greater transparency throughout the care journey.\n\nThe solution is used across multiple areas of healthcare, including hospitals and healthcare systems, behavioral health, skilled nursing facilities, accountable care organizations, hospital-at-home programs, and outpatient care. By bringing care coordination activities into a single platform and automating manual workflows, Rovicare helps healthcare organizations improve collaboration, reduce administrative effort, strengthen patient transitions, and ultimately deliver better patient outcomes.",
         role: "Individual Contributor — Full Stack, Team Lead",
         tags: ["Angular", ".NET", "MysSQL", "C#", "Web API", "Entity Framework", "Linq", "Azure Cloud", "Google Analytics", "PWA"],
-        github:null,
+        github: null,
         projectLink: "https://www.rovicare.com/",
         live: null,
         year: "2018 - 2021",
@@ -48,12 +49,12 @@ const PROJECTS = [
     },
     {
         index: "04",
-        title:"ProtocolNow",
-        description:"ProtocolNow is a digital clinical protocol management platform built to help healthcare organizations centralize, standardize, and manage clinical protocols throughout their lifecycle. It enables healthcare teams to create, review, approve, publish, search, and continuously update protocols from a single platform, ensuring that clinicians can quickly access the most current and relevant guidance. With features such as smart search, version control, checklists, collaboration, training, offline access, sharing, and usage analytics, ProtocolNow reduces dependency on scattered documents and manual processes. The platform helps healthcare organizations improve consistency, accessibility, and collaboration while supporting teams in delivering standardized, high-quality patient care.",
+        title: "ProtocolNow",
+        description: "ProtocolNow is a digital clinical protocol management platform built to help healthcare organizations centralize, standardize, and manage clinical protocols throughout their lifecycle. It enables healthcare teams to create, review, approve, publish, search, and continuously update protocols from a single platform, ensuring that clinicians can quickly access the most current and relevant guidance. With features such as smart search, version control, checklists, collaboration, training, offline access, sharing, and usage analytics, ProtocolNow reduces dependency on scattered documents and manual processes. The platform helps healthcare organizations improve consistency, accessibility, and collaboration while supporting teams in delivering standardized, high-quality patient care.",
         role: "Individual Contributor — Full Stack,",
 
-       tags: [".NET", "MysSQL", "C#", "Web API", "Entity Framework", "Linq", "ionic", "Azure Cloud", "Google Analytics", "PWA"],
-        github:null,
+        tags: [".NET", "MysSQL", "C#", "Web API", "Entity Framework", "Linq", "ionic", "Azure Cloud", "Google Analytics", "PWA"],
+        github: null,
         projectLink: "https://www.protocolnow.com/product",
         year: "2019",
         image: Protocol,
@@ -63,6 +64,19 @@ const PROJECTS = [
 
 const Projects = () => {
     const [expanded, setExpanded] = useState<string | null>(null);
+    const handleProjectExpand = (
+        projectTitle: string,
+        projectIndex: string,
+        isOpen: boolean
+    ) => {
+        if (!isOpen) {
+            trackEvent("project_expand", {
+                project_name: projectTitle,
+            });
+        }
+
+        setExpanded(isOpen ? null : projectIndex);
+    };
 
     return (
         <section
@@ -97,14 +111,14 @@ const Projects = () => {
                             <div
                                 key={project.index}
                                 className={`bg-card border rounded-xl overflow-hidden transition-all duration-200 ${isOpen
-                                        ? "border-accent/40"
-                                        : "border-border hover:border-accent/20"
+                                    ? "border-accent/40"
+                                    : "border-border hover:border-accent/20"
                                     }`}
                             >
                                 <button
                                     className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left"
                                     onClick={() =>
-                                        setExpanded(isOpen ? null : project.index)
+                                        handleProjectExpand(project.title, project.index, isOpen)
                                     }
                                 >
                                     <div className="flex items-center gap-4 min-w-0">
@@ -235,21 +249,21 @@ const Projects = () => {
                                                 ))}
                                             </div>
                                             <div className="flex gap-3">
-                                               {project.github && (
-                                                <a
-                                                    href={project.github}
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="inline-flex items-center gap-2 text-xs border border-border text-muted-foreground hover:text-foreground hover:border-foreground/20 px-4 py-2 rounded-md transition-colors"
-                                                    style={{
-                                                        fontFamily:
-                                                            "'JetBrains Mono', monospace",
-                                                    }}
-                                                >
-                                                    <Github size={13} /> GitHub
-                                                </a>
-                                               ) 
-                                               } 
+                                                {project.github && (
+                                                    <a
+                                                        href={project.github}
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        className="inline-flex items-center gap-2 text-xs border border-border text-muted-foreground hover:text-foreground hover:border-foreground/20 px-4 py-2 rounded-md transition-colors"
+                                                        style={{
+                                                            fontFamily:
+                                                                "'JetBrains Mono', monospace",
+                                                        }}
+                                                    >
+                                                        <Github size={13} /> GitHub
+                                                    </a>
+                                                )
+                                                }
                                                 {project.projectLink && (
                                                     <a
                                                         href={project.projectLink}
