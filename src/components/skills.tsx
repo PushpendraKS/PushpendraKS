@@ -27,6 +27,10 @@ const SKILLS = [
                 name: "HTML5",
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
             },
+                        {
+                name: "React",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+            },
             {
                 name: "JavaScript",
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
@@ -39,10 +43,10 @@ const SKILLS = [
                 name: "TypeScript",
                 icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg'
             },
-            // {
-            //     name: "React",
-            //     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-            // },
+            {
+                name: "RxJs",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rxjs/rxjs-original.svg",
+            },
             // {
             //     name: "Vite",
             //     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
@@ -50,7 +54,7 @@ const SKILLS = [
             {
                 name: "PWA",
                 icon: PWA
-            }
+            },
         ],
     },
     {
