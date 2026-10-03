@@ -68,7 +68,7 @@ const App = () => {
       <Nav active={active} dark={dark} onToggle={toggle} />
       <Home dark={dark} />
       <About />
-      <Skills />
+      <Skills dark={dark}/>
       <Experience />
       <Projects />
       <Education />

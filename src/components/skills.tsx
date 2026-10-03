@@ -2,6 +2,8 @@ import PWA from "../assets/pwa.svg"
 import EfCore from "../assets/efCore.svg"
 import NetFramework from "../assets/net_framework.png"
 import WebAPI from "../assets/webApi.png"
+import Claude from "../assets/claude.svg"
+import Copilot from "../assets/copilot.svg"
 
 const SKILLS = [
     // {
@@ -122,6 +124,18 @@ const SKILLS = [
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuredevops/azuredevops-original.svg"
             },
             {
+                name: "GitHub",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+            },
+            {
+                name: "Claude",
+                icon: Claude
+            },
+            {
+                name: "GitHub Copilot",
+                icon: Copilot
+            },
+            {
                 name: "Visual Studio",
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-original.svg"
             },
@@ -134,7 +148,7 @@ const SKILLS = [
     },
 ];
 
-const Skills = () => {
+const Skills = ({ dark }: { dark: boolean }) => {
     return (
         <section
             id="skills"
@@ -190,9 +204,8 @@ const Skills = () => {
                                                 alt={`${name} logo`}
                                                 className="w-7 h-7 object-contain"
                                                 style={
-                                                    /* Express logo is black — invert it on dark bg */
-                                                    name === "Express.js" ||
-                                                        name === "GitHub"
+                                                    /* logo is black — invert it on dark bg */
+                                                    (name === "GitHub" || name === "GitHub Copilot") && dark
                                                         ? {
                                                             filter:
                                                                 "invert(1) brightness(0.85)",

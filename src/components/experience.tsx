@@ -16,6 +16,7 @@ const EXPERIENCES = [
     current: true,
     description: [
       "Develop and maintain RESTful APIs for business workflows, implementing validation, exception handling, and scalable service-layer architecture.",
+      "Leveraged AI tools, including GitHub Copilot and Claude, to accelerate end-to-end development, audit-logic analysis, test-case creation, peer code reviews, and cross-layer debugging.",
       "Implement asynchronous processing and background workflows to improve application scalability and reliability.",
       "Troubleshoot and resolve application and production issues by analyzing API behavior, application logs, database performance, and service dependencies.",
       "Develop database solutions using SQL Server, including complex queries, stored procedures, LINQ, and performance optimization.",
@@ -45,6 +46,7 @@ const EXPERIENCES = [
     current: false,
     description: [
       "Worked as a Full Stack Developer, contributing to both frontend and backend development for enterprise applications focused on audit control automation and scheduling.",
+      "Utilized AI tools, including GitHub Copilot and Claude, to expedite requirement analysis, feature development, and peer code reviews.",
       "Took features through the complete software development lifecycle, including requirement analysis, technical implementation, unit testing, code review, deployment, and production support.",
       "Collaborated closely with developers, QA engineers, product/business stakeholders, and other cross-functional teams to understand requirements and deliver business solutions.",
       "Participated actively in Scrum ceremonies including daily stand-ups, sprint planning, backlog refinement, sprint reviews and retrospectives.",
@@ -171,7 +173,7 @@ const Experience = () => {
                   </p>
                   {exp.description && (
                     <div className="mt-4 pt-4 border-t border-border">
-                      <ul className="list-disc list-inside space-y-2">
+                      <ul className="list-disc list-outside pl-5 space-y-2">
                         {exp.description.map((desc, j) => (
                           <li key={j} className="text-sm text-muted-foreground">
                             {desc}
